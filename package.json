@@ -15,9 +15,9 @@
   "scripts": {
     "test": "make lint test sanity-checks",
     "start": "./node_modules/.bin/electron .",
-    "postshrinkwrap": "ts-node ./scripts/clean-shrinkwrap.ts",
-    "webpack": "webpack",
-    "watch": "webpack --watch",
+    "postshrinkwrap": "cross-env TS_NODE_PROJECT=\"tsconfig-webpack.json\" ts-node ./scripts/clean-shrinkwrap.ts",
+    "webpack": "cross-env TS_NODE_PROJECT=\"tsconfig-webpack.json\" webpack",
+    "watch": "cross-env TS_NODE_PROJECT=\"tsconfig-webpack.json\" webpack --watch",
     "concourse-build-electron": "make webpack",
     "concourse-test": "npx npm@6.14.5 test",
     "concourse-test-electron": "npx npm@6.14.5 test"
@@ -62,6 +62,7 @@
     "@types/webpack-node-externals": "^1.7.0",
     "chai": "^4.2.0",
     "copy-webpack-plugin": "^6.0.1",
+    "cross-env": "^7.0.2",
     "css-loader": "^3.5.3",
     "d3": "^4.13.0",
     "debug": "^4.2.0",
